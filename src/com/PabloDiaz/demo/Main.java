@@ -107,20 +107,6 @@ public class Main {
             }
         }
 
-        if (scores.length > 1) {
-            int secondMaxScore = -1;
-            int secondWinnerIndex = -1;
-
-            for (int i = 0; i < scores.length; i++) {
-                if (i != winnerIndex && scores[i] > secondMaxScore) {
-                    secondMaxScore = scores[i];
-                    secondWinnerIndex = i;
-                }
-            }
-
-            System.out.println("The winners are: " + playerNames[winnerIndex] + " and " + playerNames[secondWinnerIndex]);
-        } else {
-            System.out.println("The winner is: " + playerNames[winnerIndex]);
-        }
+        System.out.println("The winner is: " + playerNames[winnerIndex]);
     }
 }
