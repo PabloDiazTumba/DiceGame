@@ -5,52 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    static Scanner scanner = new Scanner(System.in);
-    static Random random = new Random();
-
     public static void main(String[] args) {
-        int numPlayers = getNumPlayers();
-        int numDice = getNumDice();
-        String[] playerNames = getPlayerNames(numPlayers);
+        int numPlayers = Input.getNumPlayers();
+        int numDice = Input.getNumDice();
+        String[] playerNames = Input.getPlayerNames(numPlayers);
 
         int[] scores = playGame(numPlayers, numDice, playerNames);
 
         printResults(playerNames, scores);
-    }
-
-    static int getNumPlayers() {
-        System.out.println("Enter the number of players:");
-        return scanner.nextInt();
-    }
-
-    static int getNumDice() {
-        System.out.println("Enter the number of dice:");
-        return scanner.nextInt();
-    }
-
-    static String[] getPlayerNames(int numPlayers) {
-        String[] names = new String[numPlayers];
-        for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Enter player " + (i + 1) + "'s name:");
-            names[i] = scanner.next();
-        }
-        return names;
-    }
-
-    static int[] rollDice(int numDice) {
-        int[] diceRolls = new int[numDice];
-        for (int i = 0; i < numDice; i++) {
-            diceRolls[i] = random.nextInt(6) + 1;
-        }
-        return diceRolls;
-    }
-
-    static int calculateScore(int[] diceRolls) {
-        int sum = 0;
-        for (int roll : diceRolls) {
-            sum += roll;
-        }
-        return sum;
     }
 
     static int[] playGame(int numPlayers, int numDice, String[] playerNames) {
