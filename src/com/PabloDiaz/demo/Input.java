@@ -21,7 +21,7 @@ public class Input {
     public static String[] getSpelarnamn(int antalSpelare) {
         String[] namn = new String[antalSpelare];
         for (int i = 0; i < antalSpelare; i++) {
-            System.out.println("Ange namn för spelare " + (i + 1) + ":");
+            System.out.println("Ange namn för spelare: " + (i + 1) + ":");
             namn[i] = scanner.next();
         }
         return namn;
