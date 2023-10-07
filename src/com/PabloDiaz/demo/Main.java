@@ -70,6 +70,6 @@ public class Main {
             }
         }
 
-        System.out.println("Vinnaren är: " + spelarnamn[vinnareIndex] + " GRATTIS!!");
+        System.out.println("Vinnaren är: " + spelarnamn[vinnareIndex] + ", GRATTIS!!");
     }
 }
