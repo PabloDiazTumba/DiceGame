@@ -1,74 +1,75 @@
 package com.PabloDiaz.demo;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        int numPlayers = Input.getNumPlayers();
-        int numDice = Input.getNumDice();
-        String[] playerNames = Input.getPlayerNames(numPlayers);
+        int antalSpelare = Input.getAntalSpelare();
+        int antalTarningar = Input.getAntalTarningar();
+        String[] spelarnamn = Input.getSpelarnamn(antalSpelare);
 
-        int[] scores = playGame(numPlayers, numDice, playerNames);
+        int[] resultat = spelaSpelet(antalSpelare, antalTarningar, spelarnamn);
 
-        printResults(playerNames, scores);
+        skrivUtResultat(spelarnamn, resultat);
     }
 
-    static int[] playGame(int numPlayers, int numDice, String[] playerNames) {
-        int[] scores = new int[numPlayers];
+    static int[] spelaSpelet(int antalSpelare, int antalTarningar, String[] spelarnamn) {
+        int[] resultat = new int[antalSpelare];
 
-        for (int i = 0; i < numPlayers; i++) {
-            System.out.println(playerNames[i] + ", press 1 to roll your dice:");
-            int rollChoice = scanner.nextInt();
+        for (int i = 0; i < antalSpelare; i++) {
+            System.out.println(spelarnamn[i] + ", tryck 1 för att kasta dina tärningar:");
+            int val = scanner.nextInt();
 
-            if (rollChoice == 1) {
-                int[] diceRolls = rollDice(numDice);
-                int score = calculateScore(diceRolls);
-                scores[i] = score;
-                System.out.println(playerNames[i] + " rolled: " + score);
+            if (val == 1) {
+                int[] tarningar = Input.kastaTarningar(antalTarningar);
+                int poang = Input.raknaPoang(tarningar);
+                resultat[i] = poang;
+                System.out.println(spelarnamn[i] + " kastade: " + poang);
             } else {
-                System.out.println("Invalid choice. Skipping turn.");
+                System.out.println("Ogiltigt val. Hopper över tur.");
             }
         }
 
-        if (scores[0] == scores[1]) {
-            System.out.println("It's a tie! Proceeding to tiebreaker round.");
+        if (resultat[0] == resultat[1]) {
+            System.out.println("Det blev oavgjort! Fortsätter till utslagsrunda.");
 
-            while (scores[0] == scores[1]) {
-                System.out.println("Both players roll again.");
+            while (resultat[0] == resultat[1]) {
+                System.out.println("Båda spelare kastar igen.");
 
-                for (int i = 0; i < numPlayers; i++) {
-                    System.out.println(playerNames[i] + ", press 1 to roll your dice:");
-                    int rollChoice = scanner.nextInt();
+                for (int i = 0; i < antalSpelare; i++) {
+                    System.out.println(spelarnamn[i] + ", tryck 1 för att kasta dina tärningar:");
+                    int val = scanner.nextInt();
 
-                    if (rollChoice == 1) {
-                        int[] diceRolls = rollDice(numDice);
-                        int score = calculateScore(diceRolls);
-                        scores[i] = score;
-                        System.out.println(playerNames[i] + " rolled: " + score);
+                    if (val == 1) {
+                        int[] tarningar = Input.kastaTarningar(antalTarningar);
+                        int poang = Input.raknaPoang(tarningar);
+                        resultat[i] = poang;
+                        System.out.println(spelarnamn[i] + " kastade: " + poang);
                     } else {
-                        System.out.println("Invalid choice. Skipping turn.");
+                        System.out.println("Ogiltigt val. Hopper över tur.");
                     }
                 }
             }
         }
 
-        return scores;
+        return resultat;
     }
 
-    static void printResults(String[] playerNames, int[] scores) {
-        int maxScore = -1;
-        int winnerIndex = -1;
+    static void skrivUtResultat(String[] spelarnamn, int[] resultat) {
+        int maxPoang = -1;
+        int vinnareIndex = -1;
 
-        for (int i = 0; i < scores.length; i++) {
-            System.out.println(playerNames[i] + " scored: " + scores[i]);
-            if (scores[i] > maxScore) {
-                maxScore = scores[i];
-                winnerIndex = i;
+        for (int i = 0; i < resultat.length; i++) {
+            System.out.println(spelarnamn[i] + " fick: " + resultat[i]);
+            if (resultat[i] > maxPoang) {
+                maxPoang = resultat[i];
+                vinnareIndex = i;
             }
         }
 
-        System.out.println("The winner is: " + playerNames[winnerIndex]);
+        System.out.println("Vinnaren är: " + spelarnamn[vinnareIndex]);
     }
 }

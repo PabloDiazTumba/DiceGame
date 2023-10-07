@@ -1,43 +1,45 @@
 package com.PabloDiaz.demo;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Input {
 
     static Scanner scanner = new Scanner(System.in);
+    static Random slumpGenerator = new Random();
 
-    public static int getNumPlayers() {
-        System.out.println("Enter the number of players:");
+    public static int getAntalSpelare() {
+        System.out.println("Ange antal spelare:");
         return scanner.nextInt();
     }
 
-    public static int getNumDice() {
-        System.out.println("Enter the number of dice:");
+    public static int getAntalTarningar() {
+        System.out.println("Ange antal tärningar:");
         return scanner.nextInt();
     }
 
-    public static String[] getPlayerNames(int numPlayers) {
-        String[] names = new String[numPlayers];
-        for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Enter player " + (i + 1) + "'s name:");
-            names[i] = scanner.next();
+    public static String[] getSpelarnamn(int antalSpelare) {
+        String[] namn = new String[antalSpelare];
+        for (int i = 0; i < antalSpelare; i++) {
+            System.out.println("Ange namn för spelare " + (i + 1) + ":");
+            namn[i] = scanner.next();
         }
-        return names;
+        return namn;
     }
 
-    public static int[] rollDice(int numDice) {
-        int[] diceRolls = new int[numDice];
-        for (int i = 0; i < numDice; i++) {
-            diceRolls[i] = random.nextInt(6) + 1;
+    public static int[] kastaTarningar(int antalTarningar) {
+        int[] tarningar = new int[antalTarningar];
+        for (int i = 0; i < antalTarningar; i++) {
+            tarningar[i] = slumpGenerator.nextInt(6) + 1;
         }
-        return diceRolls;
+        return tarningar;
     }
 
-    public static int calculateScore(int[] diceRolls) {
-        int sum = 0;
-        for (int roll : diceRolls) {
-            sum += roll;
+    public static int raknaPoang(int[] tarningar) {
+        int summa = 0;
+        for (int tarning : tarningar) {
+            summa += tarning;
         }
-        return sum;
+        return summa;
     }
 }
