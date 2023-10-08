@@ -22,6 +22,10 @@ public class Main {
 
         for (int i = 0; i < antalSpelare; i++) {
             System.out.println(spelarnamn[i] + ", tryck 1 för att kasta dina tärningar:");
+
+            try {
+
+
             int val = scanner.nextInt();
 
             if (val == 1) {
@@ -31,6 +35,8 @@ public class Main {
                 System.out.println(spelarnamn[i] + " kastade: " + poang);
             } else {
                 System.out.println("Ogiltigt val. Hopper över tur.");
+            }
+
             }
         }
 
@@ -42,20 +48,19 @@ public class Main {
 
                 for (int i = 0; i < antalSpelare; i++) {
                     System.out.println(spelarnamn[i] + ", tryck 1 för att kasta dina tärningar:");
-
                     try {
                         int val = scanner.nextInt();
 
-                    if (val == 1) {
-                        int[] tarningar = Input.kastaTarningar(antalTarningar);
-                        int poang = Input.raknaPoang(tarningar);
-                        resultat[i] = poang;
-                        System.out.println(spelarnamn[i] + " kastade: " + poang);
-                    } else {
-                        System.out.println("Ogiltigt val. Hopper över tur.");
-                    }
+                        if (val == 1) {
+                            int[] tarningar = Input.kastaTarningar(antalTarningar);
+                            int poang = Input.raknaPoang(tarningar);
+                            resultat[i] = poang;
+                            System.out.println(spelarnamn[i] + " kastade: " + poang);
+                        } else {
+                            System.out.println("Ogiltigt val. Hopper över tur.");
+                        }
                     } catch (InputMismatchException e) {
-                        System.out.println("Du måste ange en siffra, var god och försök igen");
+                        System.out.println("Du måste välja 1, var god försök igen.");
                         scanner.next();
                         i--;
                     }
