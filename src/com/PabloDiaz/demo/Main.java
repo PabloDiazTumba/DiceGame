@@ -34,7 +34,7 @@ public class Main {
         }
 
         if (resultat[0] == resultat[1]) {
-            System.out.println("Det blev oavgjort! Fortsätter till utslagsrunda.");
+            System.out.println("Det blev oavgjort! Fortsätter till utslagsrunda!.");
 
             while (resultat[0] == resultat[1]) {
                 System.out.println("Båda spelare kastar igen.");

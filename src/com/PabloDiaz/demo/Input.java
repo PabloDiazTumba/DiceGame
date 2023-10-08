@@ -9,12 +9,12 @@ public class Input {
     static Random slumpGenerator = new Random();
 
     public static int getAntalSpelare() {
-        System.out.println("Ange antal spelare:");
+        System.out.println("Ange antal spelare: ");
         return scanner.nextInt();
     }
 
     public static int getAntalTarningar() {
-        System.out.println("Ange antal tärningar:");
+        System.out.println("Ange antal tärningar: ");
         return scanner.nextInt();
     }
 
