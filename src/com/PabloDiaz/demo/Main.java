@@ -41,7 +41,9 @@ public class Main {
 
                 for (int i = 0; i < antalSpelare; i++) {
                     System.out.println(spelarnamn[i] + ", tryck 1 för att kasta dina tärningar:");
-                    int val = scanner.nextInt();
+
+                    try {
+                        int val = scanner.nextInt();
 
                     if (val == 1) {
                         int[] tarningar = Input.kastaTarningar(antalTarningar);
@@ -50,6 +52,9 @@ public class Main {
                         System.out.println(spelarnamn[i] + " kastade: " + poang);
                     } else {
                         System.out.println("Ogiltigt val. Hopper över tur.");
+                    }
+                    } catch (Exception e) {
+
                     }
                 }
             }
