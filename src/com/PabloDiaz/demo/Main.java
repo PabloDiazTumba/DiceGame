@@ -1,5 +1,6 @@
 package com.PabloDiaz.demo;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -53,8 +54,10 @@ public class Main {
                     } else {
                         System.out.println("Ogiltigt val. Hopper över tur.");
                     }
-                    } catch (Exception e) {
-
+                    } catch (InputMismatchException e) {
+                        System.out.println("Du måste ange en siffra, var god och försök igen");
+                        scanner.next();
+                        i--;
                     }
                 }
             }
