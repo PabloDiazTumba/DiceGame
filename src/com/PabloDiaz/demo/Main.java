@@ -37,6 +37,10 @@ public class Main {
                 System.out.println("Ogiltigt val. Hopper över tur.");
             }
 
+            } catch (InputMismatchException e) {
+                System.out.println("Du måste välja 1, var god försök igen.");
+                scanner.next();
+                i--;
             }
         }
 
